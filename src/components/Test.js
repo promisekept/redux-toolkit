@@ -1,13 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { displayNum } from "../redux/features/counter.feature";
 
 const Test = () => {
-  const num = useSelector((state) => {
-    console.log("state counter in Test.js: " + state.counter);
-    return state.counter;
-  });
-  console.log(num);
-  return <div>tst</div>;
+  const num = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <p>{num[0]}</p>
+      <button onClick={() => dispatch(displayNum())}>displayNum</button>
+    </>
+  );
 };
 
 export default Test;
